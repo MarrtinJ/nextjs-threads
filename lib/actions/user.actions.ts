@@ -6,14 +6,23 @@ import { connectToDB } from '../mongoose'
 
 // make connections to mongoose db
 
-export async function updateUser(
-  userId: string,
-  username: string,
-  name: string,
-  bio: string,
-  image: string,
+interface Params {
+  userId: string
+  username: string
+  name: string
+  bio: string
+  image: string
   path: string
-): Promise<void> {
+}
+
+export async function updateUser({
+  userId,
+  username,
+  name,
+  bio,
+  image,
+  path,
+}: Params): Promise<void> {
   connectToDB()
 
   try {
