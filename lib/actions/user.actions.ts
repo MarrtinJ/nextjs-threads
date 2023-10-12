@@ -45,6 +45,17 @@ export async function updateUser({
       revalidatePath(path)
     }
   } catch (error: any) {
-    throw new Error(`Failed to create/update yser: ${error.message}`)
+    throw new Error(`Failed to create/update user: ${error.message}`)
+  }
+}
+
+export async function fetchUser(userId: string) {
+  try {
+    connectToDB()
+
+    return await User.findOne({id: userId})
+    // .populate({path: 'communities', model: Community})
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user: ${error.message}`)
   }
 }
