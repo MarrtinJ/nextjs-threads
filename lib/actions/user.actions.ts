@@ -79,6 +79,8 @@ export async function fetchUserPosts(userId: string) {
       },
     })
 
+    // console.log(threads)
+
     return threads
   } catch (error: any) {
     throw new Error(`Failed to fetch user posts: ${error.message}`)
